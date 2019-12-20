@@ -1,0 +1,22 @@
+{
+    "presets": [
+        ["@babel/env",
+        {
+            "targets":
+            {
+                "browsers": "last 2 versions, > 1%"
+            },
+            "modules": false,
+            "loose": true
+        }]
+    ],
+    "plugins": [
+        ["@babel/plugin-transform-runtime",
+        {
+            "corejs": false,
+            "helpers": false,
+            "regenerator": false,
+            "useESModules": false
+        }]
+    ]
+}
