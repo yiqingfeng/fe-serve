@@ -6,7 +6,7 @@
     "scripts": {
         "lint": "eslint -c .eslintrc.js --ext .js,.ts src",
         "clean": "rimraf ./dist",
-        "bulid": "rollup -c build/rollup.config.js"
+        "build": "rollup -c build/rollup.config.js"
     },
     "keywords": [
         "JavaScript",

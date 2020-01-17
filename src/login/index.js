@@ -5,7 +5,10 @@
 import axios from 'axios';
 
 /* eslint-disable indent */
-export default function login(data = {}, config = {}) {
+/**
+ * @description 本地开发时，利用登录接口将身份对应的 cookie 信息写入
+ */
+export default function login(data = {}) {
     return new Promise((resolve, reject) => {
         axios({
                 method: 'post',
@@ -24,7 +27,6 @@ export default function login(data = {}, config = {}) {
                     PersistenceHint: true,
                     UserAccount: data.account,
                 },
-                ...config,
             })
             .then((res) => {
                 const resData = res.data;
