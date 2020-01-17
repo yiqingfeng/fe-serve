@@ -36,6 +36,38 @@ function getTotalPrecision(...nums) {
     return total;
 }
 
+/**
+ * @description 字符串表达式预处理
+ * @param {Array|String} expQueue 运算表达式 ['1', '+', '2'] 或 '1 + 2'
+ * @returns {Array} 计算队列
+ */
+function preExpCalc(expQueue = []) {
+    const operators = ['+', '-', '*', '/'];
+    if (Array.isArray(expQueue)) {
+        return expQueue.map((item) => {
+            if (operators.indexOf(item) === -1) {
+                return isNaN(+item) ? 0 : +item;
+            }
+            return item;
+        });
+    }
+
+    const result = [];
+    let temp = '';
+    for(let i = 0, len = expQueue.length; i < len; i++) {
+        if (operators.indexOf(expQueue[i]) === -1) {
+            temp += expQueue[i];
+            continue;
+        }
+        result.push(isNaN(+temp) ? 0 : +temp, expQueue[i]);
+        temp = '';
+    }
+    if (temp) {
+        result.push(isNaN(+temp) ? 0 : +temp)
+    }
+    return result;
+}
+
 export default {
     /**
      * @description 两数相加，未传值时默认为 0
@@ -67,4 +99,21 @@ export default {
         const assistNum = 10 ** maxPrecision;
         return (this.mulCalc(num1, assistNum) / this.mulCalc(num2, assistNum));
     },
+    /**
+     * @description 字符串表达式四则运算
+     * @param {Array|String} expQueue 运算表达式 ['1', '+', '2'] 或 '1 + 2'
+     * @param {Number} decimal 计算精度
+     *      计算精度如果传递，则每次计算都会进行精度控制（即会存在精度损失）。
+     *      场景：涉及多重计算时，与后台保持一致
+     */
+    expCalc(str, decimal) {
+        const queue = preCalc(expQueue, decimal);
+        // 计算权重
+        const weight = {
+            '+': 1,
+            '-': 1,
+            '*': 2,
+            '/': 2,
+        };
+    }
 };
