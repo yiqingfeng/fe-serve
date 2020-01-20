@@ -10,3 +10,7 @@ trim_trailing_whitespace = true
 
 [package.json]
 # indent_size = 4
+
+# examples 所有文件处理
+[examples/**.**]
+# indent_size = 2

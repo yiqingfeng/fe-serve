@@ -7,7 +7,9 @@
         "lint": "eslint -c .eslintrc.js --ext .js,.ts src",
         "clean": "rimraf ./dist",
         "build": "rollup -c build/rollup.config.js",
-        "docs": "docsify serve ./docs"
+        "docs": "docsify serve ./docs",
+        "dev": "cd ./examples && npm run serve",
+        "build:demo": "cd ./examples && npm run build"
     },
     "keywords": [
         "JavaScript",
