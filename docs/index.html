@@ -18,10 +18,18 @@
             name: 'fe-serve',
             repo: 'https://github.com/yiqingfeng/fe-serve.git',
             loadSidebar: true,
-            loadSidebar: 'routes.md'
+            loadSidebar: 'routes.md',
+            search: {
+                placeholder: 'Search',
+                noData: {
+                    '/': '找不到结果'
+                }
+            }
         };
+
     </script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
 </body>
 
 </html>
