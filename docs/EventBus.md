@@ -1,6 +1,6 @@
-## EventBus
+# EventBus
 
-### 基本用法
+## 基本用法
 
 ```javascript
 const EventBus = require('fs-serve/eventbus');
@@ -24,17 +24,17 @@ em.$emit('change', {a: 1});
 ```
 
 
-### 特性
+## 特性
 
 - 支持全局或具体对象，发布/订阅。
 - 支持父子事件
 
 
-### 接口APIS
+## 接口APIS
 
-接口   | 格式                                                   | 备注
-----  | ------------------------------------------------------ | ---
-$on   | `$on(events: string | Array<string>, fn: Function)`    | 注册自定义事件/事件列表
-$once | `$once(events: string, fn: Function)`                  | 注册一次性自定义事件
-$off  | `$off(events?: string | Array<string>, fn?: Function)` | 移除自定义事件/事件列表
-$emit | `$emit(events: string)`                                | 触发自定义事件
+接口   | 格式                                                    | 备注
+----  | ------------------------------------------------------  | ---
+$on   | `$on(events: string \| Array<string>, fn: Function)`    | 注册自定义事件/事件列表
+$once | `$once(events: string, fn: Function)`                   | 注册一次性自定义事件
+$off  | `$off(events?: string \| Array<string>, fn?: Function)` | 移除自定义事件/事件列表
+$emit | `$emit(events: string)`                                 | 触发自定义事件
