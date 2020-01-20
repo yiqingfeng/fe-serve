@@ -9,6 +9,7 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+    <!-- <link rel="stylesheet" href="./styles/docs.css"> -->
 </head>
 
 <body>
@@ -24,7 +25,19 @@
                 noData: {
                     '/': '找不到结果'
                 }
-            }
+            },
+            // plugins: [
+            //     function (hook, vm) {
+            //         hook.afterEach(function (html) {
+            //             var mobilePage = [
+            //                 '<div class="mobile">',
+            //                 '<iframe id="mobile" class="mobile__page" src="//open.ceshi113.com/open/delta-ui/demo/#">',
+            //                 '</div>',
+            //             ].join('');
+            //             return html + mobilePage;
+            //         });
+            //     }
+            // ]
         };
 
     </script>

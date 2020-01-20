@@ -132,7 +132,7 @@ export default {
      *      计算精度如果传递，则每次计算都会进行精度控制（即会存在精度损失）。
      *      场景：涉及多重计算时，与后台保持一致
      */
-    expCalc(str, decimal) {
+    expCalc(expQueue, decimal) {
         const queue = preExpCalc(expQueue);
         /**
          * 利用 栈 进行表达式求值 https://www.cnblogs.com/lulipro/p/7450886.html

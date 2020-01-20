@@ -1,0 +1,25 @@
+main .content {
+    right: 450px;
+}
+
+main .mobile {
+    position: fixed;
+    top: 50%;
+    right: 80px;
+    transform: translateY(-50%);
+    background: url('../images/phone.png') no-repeat;
+    background-size: 100%;
+    width: 350px;
+    height: 765px;
+}
+
+main .mobile__page {
+    margin: 85px 15px 0 15px;
+    width: 320px;
+    height: 568px;
+    background-color: #fff;
+}
+
+main .markdown-section iframe {
+    min-width: unset;
+}
