@@ -1,0 +1,87 @@
+{
+    "defaultSeverity": "warning",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "linterOptions": {
+        "exclude": [
+            "node_modules/**"
+        ]
+    },
+    "rules": {
+        // Requires single or double quotes for string literals.
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "indent": [
+            true,
+            "spaces",
+            2
+        ],
+        // allow-new: Allows ‘new’ expressions for side effects.
+        // allow-fast-null-checks: (e.g. e && e.preventDefault()).
+        "no-unused-expression": [
+            true,
+            "allow-new",
+            "allow-fast-null-checks"
+        ],
+        // Requires that import statements be alphabetized and grouped.
+        "ordered-imports": false,
+        // Checks ordering of keys in object literals.
+        "object-literal-sort-keys": false,
+        // Enforces braces for if/for/do/while statements.
+        "curly": [
+            true,
+            "ignore-same-line"
+        ],
+        // ban-single-arg-parens: Arrow functions with one parameter must not have parentheses.
+        "arrow-parens": [
+            true,
+            "ban-single-arg-parens"
+        ],
+        // Disallows empty blocks.
+        // allow-empty-functions: Function definitions are allowed to be empty.
+        "no-empty": [
+            true,
+            "allow-empty-functions"
+        ],
+        // Requires interface names to begin with a capital ‘I’
+        "interface-name": [
+            true,
+            "never-prefix"
+        ],
+        // Bans the use of specified console methods.
+        "no-console": false,
+        // ignore-pattern: String defining ignore pattern for this rule, being parsed by new RegExp().
+        "max-line-length": [
+            true,
+            {
+                "limit": 120,
+                "ignore-pattern": "console"
+            }
+        ],
+        // Enforces consistent object literal property quote style.
+        // consistent: Property names should either all be quoted or unquoted.
+        "object-literal-key-quotes": [
+            true,
+            "consistent"
+        ],
+        // Requires parentheses when invoking a constructor via the new keyword.
+        "new-parens": false,
+        // Requires the radix parameter to be specified when calling parseInt.
+        "radix": false,
+        // temporalDeadZone: Shows errors when shadowing block scoped declarations in their temporal dead zone.
+        "no-shadowed-variable": [
+            true,
+            {
+                "temporalDeadZone": false
+            }
+        ],
+        // Disallows use of internal modules and namespaces.
+        "no-namespace": [
+            true,
+            "allow-declarations"
+        ]
+    }
+}
