@@ -22,7 +22,6 @@ module.exports = {
     globals: {
 
     },
-
     rules: {
         'indent': ['error', 4],
         'import/extensions': 'off',
@@ -35,10 +34,10 @@ module.exports = {
     },
 
     'extends': [
-      'plugin:vue/essential',
-      'eslint:recommended',
-      'airbnb-base',
-      'plugin:vue/recommended',
-      '@vue/typescript'
+        'plugin:vue/essential',
+        'eslint:recommended',
+        'airbnb-base',
+        'plugin:vue/recommended',
+        '@vue/typescript'
     ]
 };
