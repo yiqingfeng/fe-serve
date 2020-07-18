@@ -4,40 +4,47 @@ module.exports = {
     root: true,
 
     env: {
-        node: true
+        node: true,
     },
 
     parserOptions: {
         parser: '@typescript-eslint/parser',
-        sourceType: 'module'
+        sourceType: 'module',
     },
 
     extends: [
-        'plugin:vue/essential',
         'eslint:recommended',
         'airbnb-base',
-        'plugin:vue/recommended'
+        'plugin:@typescript-eslint/recommended',
     ],
 
     globals: {
 
     },
     rules: {
-        'indent': ['error', 4],
-        'import/extensions': 'off',
-        'no-console': ISDEUG ? 0 : 1,
-        'no-underscore-dangle': ['error', {
-            allowAfterThis: true,
-            // 'allow': ['_events']
-        }],
-        'vue/html-indent': ['error', 4]
-    },
+        // https://cn.eslint.org/docs/rules/
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "always",
+                "objects": "always",
+                "imports": "always",
+                "exports": "always",
+                "functions": "never"
+            }
+        ],
+        "indent": ["warn", 4],
+        "space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "always",
+                "named": "never",
+                "asyncArrow": "always"
+            }
+        ],
+        "semi": "off",
 
-    'extends': [
-        'plugin:vue/essential',
-        'eslint:recommended',
-        'airbnb-base',
-        'plugin:vue/recommended',
-        '@vue/typescript'
-    ]
+        // ts-eslint
+        "@typescript-eslint/no-explicit-any": "off"
+    },
 };
