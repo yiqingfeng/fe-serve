@@ -1,21 +1,17 @@
-const ISDEUG = process.env.NODE_ENV === 'development';
-
 module.exports = {
     root: true,
-
+    parser: '@typescript-eslint/parser', // 使用 ts 解析器
     env: {
+        browser: true,
         node: true,
+        es6: true,
     },
-
     parserOptions: {
-        parser: '@typescript-eslint/parser',
         sourceType: 'module',
     },
-
     extends: [
-        'eslint:recommended',
-        'airbnb-base',
-        'plugin:@typescript-eslint/recommended',
+        'eslint:recommended', // eslint 推荐规则
+        'plugin:@typescript-eslint/recommended', // ts 推荐规则
     ],
 
     globals: {
@@ -26,9 +22,9 @@ module.exports = {
         "comma-dangle": [
             "error",
             {
-                "arrays": "always",
-                "objects": "always",
-                "imports": "always",
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
                 "exports": "always",
                 "functions": "never"
             }

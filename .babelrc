@@ -1,22 +1,11 @@
 {
     "presets": [
-        ["@babel/env",
-        {
-            "targets":
+        [
+            "@babel/preset-env",
             {
-                "browsers": "last 2 versions, > 1%"
-            },
-            "modules": false,
-            "loose": true
-        }]
-    ],
-    "plugins": [
-        ["@babel/plugin-transform-runtime",
-        {
-            "corejs": false,
-            "helpers": false,
-            "regenerator": false,
-            "useESModules": false
-        }]
+                /* Babel 会在 Rollup 有机会做处理之前，将我们的模块转成 CommonJS，导致 Rollup 的一些处理失败 */
+                "modules": false
+            }
+        ]
     ]
 }

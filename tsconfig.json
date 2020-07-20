@@ -1,38 +1,31 @@
 {
     "compilerOptions": {
+        /* 基础配置 */
         "target": "esnext",
-        "module": "esnext",
-        "strict": true,
-        "jsx": "preserve",
-        "importHelpers": true,
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "allowJs": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "sourceMap": true,
-        "baseUrl": ".",
-        "types": [
-            "webpack-env"
-        ],
-        "paths": {
-            "@/*": [
-                "demo/*"
-            ]
-        },
         "lib": [
-            "esnext",
             "dom",
-            "dom.iterable",
-            "scripthost"
-        ]
+            "esnext"
+        ],
+        "removeComments": false,
+        "declaration": true,
+        "sourceMap": true,
+        "typeRoots": [
+            "typings/"
+        ],
+
+        /* 强类型检查配置 */
+        "strict": true,
+        "noImplicitAny": false,
+
+        /* 模块分析配置 */
+        "baseUrl": ".",
+        "outDir": "./lib",
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true
     },
     "include": [
-        "demo/**/*.ts",
-        "demo/**/*.tsx",
-        "demo/**/*.vue"
-    ],
-    "exclude": [
-        "node_modules"
+        "src/**/*.ts",
+        "src/**/*.js"
     ]
 }
