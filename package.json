@@ -1,18 +1,16 @@
 {
-    "name": "fe-serve",
+    "name": "fe-core",
     "version": "1.0.0",
-    "description": "前端通用服务工具",
+    "description": "前端工具库",
     "author": "nimo",
     "scripts": {
-        "build": "rollup --c rollup.config.ts",
+        "build": "rollup -c rollup.config.js",
+        "lint": "eslint -c .eslintrc.js --ext .js,.ts src,test",
         "test": "jest --coverage --verbose -u",
-        "lint": "eslint -c .eslintrc.js --ext .js,.ts src",
-        "clean": "rimraf ./dist",
-        "dev": "vue-cli-service serve",
-        "docs": "docsify serve ./docs",
-        "start": "npm run dev"
+        "docs": "docsify serve ./docs"
     },
-    "main": "index.js",
+    "main": "lib/index.js",
+    "module": "lib/index.esm.js",
     "typings": "typings/index.d.js",
     "files": [
         "lib",

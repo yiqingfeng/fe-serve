@@ -1,32 +1,34 @@
-import path from 'path';
-// import { RollupOptions } from 'rollup';
-import rollupTypescript from 'rollup-plugin-typescript2';
-import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import { eslint } from 'rollup-plugin-eslint';
-import { DEFAULT_EXTENSIONS } from '@babel/core';
+const path = require('path');
+const babel = require('rollup-plugin-babel');
+const commonjs = require('rollup-plugin-commonjs');
+const resolve = require('rollup-plugin-node-resolve');
+const rollupTypescript = require('rollup-plugin-typescript2');
+const {
+    eslint,
+} = require('rollup-plugin-eslint');
+const {
+    DEFAULT_EXTENSIONS,
+} = require('@babel/core');
 
-import pkg from './package.json';
+const pkg = require('./package.json');
 
-const paths = {
-    input: path.join(__dirname, '/src/index.ts'),
-    output: path.join(__dirname, '/lib'),
-};
+const rootPath = path.join(__dirname, './');
+const entryPath = path.resolve(rootPath, './src/index.ts');
+const outPath = path.resolve(rootPath, './lib')
 
 // rollup 配置项
-const rollupConfig = {
-    input: paths.input,
+module.exports = {
+    input: entryPath,
     output: [
         // 输出 commonjs 规范的代码
         {
-            file: path.join(paths.output, 'index.js'),
+            file: path.join(outPath, 'index.js'),
             format: 'cjs',
             name: pkg.name,
         },
         // 输出 es 规范的代码
         {
-            file: path.join(paths.output, 'index.esm.js'),
+            file: path.join(outPath, 'index.esm.js'),
             format: 'es',
             name: pkg.name,
         },
@@ -65,5 +67,3 @@ const rollupConfig = {
         }),
     ],
 };
-
-export default rollupConfig;
