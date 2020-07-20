@@ -10,7 +10,8 @@
         "declaration": true,
         "sourceMap": true,
         "typeRoots": [
-            "typings/"
+            "./node_modules/@types",
+            "./types"
         ],
 
         /* 强类型检查配置 */

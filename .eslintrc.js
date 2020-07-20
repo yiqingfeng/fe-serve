@@ -13,6 +13,10 @@ module.exports = {
         'eslint:recommended', // eslint 推荐规则
         'plugin:@typescript-eslint/recommended', // ts 推荐规则
     ],
+    plugins: [
+        '@typescript-eslint',
+        'jest',
+    ],
 
     globals: {
 
