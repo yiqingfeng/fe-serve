@@ -7,6 +7,8 @@ package-lock.json
 .env.local
 .env.*.local
 
+coverage/
+
 # Log files
 npm-debug.log*
 yarn-debug.log*
@@ -21,3 +23,5 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw*
+
+lib/

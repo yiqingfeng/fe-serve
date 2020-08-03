@@ -1,3 +1,5 @@
-export function test(name: string): string {
-    return `hi ${name}`;
+import utils from './utils';
+
+export default{
+    ...utils,
 }
