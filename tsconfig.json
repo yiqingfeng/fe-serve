@@ -9,7 +9,7 @@
         "removeComments": false,
         "declaration": true,
         "sourceMap": true,
-        "declarationMap": true,
+        // "declarationMap": true,
         "typeRoots": [
             "./node_modules/@types",
         ],

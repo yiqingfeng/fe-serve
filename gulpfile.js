@@ -101,4 +101,4 @@ async function apiExtractorGenerate(cb) {
  *      2. rollup 打包
  *      3. api-extractor 生成统一声明文件
  */
-exports.build = series(clean, buildByRollup, apiExtractorGenerate)
+exports.build = series(clean, buildByRollup)

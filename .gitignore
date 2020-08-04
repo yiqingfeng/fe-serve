@@ -24,4 +24,4 @@ lerna-debug.log*
 *.sln
 *.sw*
 
-#lib/
+lib/
