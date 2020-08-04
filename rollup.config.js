@@ -1,23 +1,28 @@
-const path = require('path');
-const babel = require('rollup-plugin-babel');
-const commonjs = require('rollup-plugin-commonjs');
-const resolve = require('rollup-plugin-node-resolve');
-const rollupTypescript = require('rollup-plugin-typescript2');
-const {
+import path from 'path';
+import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
+import resolve from 'rollup-plugin-node-resolve';
+import rollupTypescript from 'rollup-plugin-typescript2';
+import {
     eslint,
-} = require('rollup-plugin-eslint');
-const {
+} from 'rollup-plugin-eslint';
+import {
     DEFAULT_EXTENSIONS,
-} = require('@babel/core');
+} from '@babel/core';
+import {
+    uglify,
+} from 'rollup-plugin-uglify';
 
-const pkg = require('./package.json');
+import pkg from './package.json';
 
 const rootPath = path.join(__dirname, './');
 const entryPath = path.resolve(rootPath, './src/index.ts');
 const outPath = path.resolve(rootPath, './lib')
 
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+
 // rollup 配置项
-module.exports = {
+export default {
     input: entryPath,
     output: [
         // 输出 commonjs 规范的代码
@@ -28,8 +33,14 @@ module.exports = {
         },
         // 输出 es 规范的代码
         {
-            file: path.join(outPath, 'index.esm.js'),
+            file: path.join(outPath, 'index.es.js'),
             format: 'es',
+            name: pkg.name,
+        },
+        // 输出 umd 规范代码
+        {
+            file: path.join(outPath, 'index.umd.js'),
+            format: 'umd',
             name: pkg.name,
         },
     ],
@@ -65,5 +76,16 @@ module.exports = {
                 '.ts',
             ],
         }),
+
+        ...(
+            IS_PRODUCTION ? [
+                // 代码压缩
+                uglify({
+                    compress: {
+                        evaluate: false,
+                    }
+                }),
+            ] : []
+        ),
     ],
 };
