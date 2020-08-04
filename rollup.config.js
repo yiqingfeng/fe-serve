@@ -10,8 +10,8 @@ const {
     DEFAULT_EXTENSIONS,
 } = require('@babel/core');
 const {
-    uglify,
-} = require('rollup-plugin-uglify');
+    terser,
+} = require('rollup-plugin-terser');
 
 const pkg = require('./package.json');
 
@@ -80,10 +80,10 @@ module.exports ={
         ...(
             IS_PRODUCTION ? [
                 // 代码压缩
-                uglify({
+                terser({
                     compress: {
                         evaluate: false,
-                    }
+                    },
                 }),
             ] : []
         ),
