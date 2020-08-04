@@ -90,6 +90,9 @@ export default class EventBus implements EventBusClass {
             if (index > -1) {
                 fns.splice(index, 1);
             }
+            if (fns.length === 0) {
+                delete this._events[events];
+            }
         }
 
         return this;
