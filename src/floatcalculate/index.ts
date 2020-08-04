@@ -2,9 +2,19 @@
  * @description JS 浮点数计算处理
  * @author daiq 2020-01-17
  */
-import { toNumber } from './base';
-
 type NumberData = number | string | undefined | null;
+
+/**
+ * @description 将指定字符串或数字转换成数字 undefined | null 会被视为 0
+ * @param num {string | number} 带转换的数字
+ */
+function toNumber(num ?: string | number | null): number {
+    let data = Number(num);
+    if (isNaN(data)) {
+        data = 0;
+    }
+    return data;
+}
 
 /**
  * @description 获取数字的最大精度（即最大小数位数）
@@ -286,7 +296,7 @@ function expCalc(expQueue: NumberData[] | string, decimal?: number): number | st
 /**
  * @description 浮点数相关计算，所有计算结果均会返回对应字符串
  */
-export {
+export default {
     setNumberDecimal,
     addCalc,
     subCalc,
