@@ -1,19 +1,19 @@
-import path from 'path';
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import rollupTypescript from 'rollup-plugin-typescript2';
-import {
+const path = require('path');
+const babel = require('rollup-plugin-babel');
+const commonjs = require('rollup-plugin-commonjs');
+const resolve = require('rollup-plugin-node-resolve');
+const rollupTypescript = require('rollup-plugin-typescript2');
+const {
     eslint,
-} from 'rollup-plugin-eslint';
-import {
+} = require('rollup-plugin-eslint');
+const {
     DEFAULT_EXTENSIONS,
-} from '@babel/core';
-import {
+} = require('@babel/core');
+const {
     uglify,
-} from 'rollup-plugin-uglify';
+} = require('rollup-plugin-uglify');
 
-import pkg from './package.json';
+const pkg = require('./package.json');
 
 const rootPath = path.join(__dirname, './');
 const entryPath = path.resolve(rootPath, './src/index.ts');
@@ -22,7 +22,7 @@ const outPath = path.resolve(rootPath, './lib')
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 // rollup 配置项
-export default {
+module.exports ={
     input: entryPath,
     output: [
         // 输出 commonjs 规范的代码

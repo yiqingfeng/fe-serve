@@ -1,19 +1,19 @@
-import path from 'path';
-import {
+const path = require('path');
+const {
     series,
-} from 'gulp';
-import fse from 'fs-extra';
-import chalk from 'chalk';
-import {
+} = require('gulp');
+const fse = require('fs-extra');
+const chalk = require('chalk');
+const {
     rollup,
-} from 'rollup';
-import {
+} = require('rollup');
+const {
     Extractor,
     ExtractorConfig,
     ExtractorResult,
-} from '@microsoft/api-extractor'
+} = require('@microsoft/api-extractor');
 // import conventionalChangelog from 'conventional-changelog'
-import rollupConfig from './rollup.config';
+const rollupConfig = require('./rollup.config');
 
 const rootPath = path.join(__dirname, './');
 const outPath = path.resolve(rootPath, './lib');
@@ -101,4 +101,4 @@ async function apiExtractorGenerate(cb) {
  *      2. rollup 打包
  *      3. api-extractor 生成统一声明文件
  */
-export const build = series(clean, buildByRollup, apiExtractorGenerate)
+exports.build = series(clean, buildByRollup, apiExtractorGenerate)

@@ -15,7 +15,7 @@
     },
     "main": "lib/index.js",
     "module": "lib/index.esm.js",
-    "typings": "typings/index.d.js",
+    "typings": "lib/index.d.js",
     "files": [
         "lib",
         "LICENSE",
