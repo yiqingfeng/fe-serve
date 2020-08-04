@@ -5,7 +5,7 @@
     "author": "nimo",
     "scripts": {
         "build": "rollup -c rollup.config.js",
-        "lint": "eslint -c .eslintrc.js --ext .js,.ts src,test",
+        "lint": "eslint -c .eslintrc.js --ext .js,.ts src/ test/",
         "test": "jest --coverage --verbose -u",
         "docs": "docsify serve ./docs"
     },

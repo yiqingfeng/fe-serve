@@ -2,9 +2,7 @@
  * @description JS 浮点数计算处理
  * @author daiq 2020-01-17
  */
-import base from './base';
-
-const toNumber = base.toNumber;
+import { toNumber } from './base';
 
 type NumberData = number | string | undefined | null;
 
@@ -49,7 +47,7 @@ function getTotalPrecision(...nums: number[]): number {
  */
 const OPERATORS = ['+', '-', '*', '/', '(', ')'];
 
-function preExpCalc(expQueue: NumberData[] | string = []): Array<number | string> {
+function preExpCalc(expQueue: NumberData[] | string): Array<number | string> {
     if (Array.isArray(expQueue)) {
         return expQueue.map((item: NumberData) => {
             const data = String(item);
@@ -62,7 +60,7 @@ function preExpCalc(expQueue: NumberData[] | string = []): Array<number | string
 
     const result: Array<number | string> = [];
     let temp = '';
-    for (let i = 0, len = expQueue.length; i < len; i++) {
+    for (let i = 0; i < expQueue.length; i++) {
         if (OPERATORS.indexOf(expQueue[i]) === -1) {
             temp += expQueue[i];
             continue;
@@ -288,7 +286,7 @@ function expCalc(expQueue: NumberData[] | string, decimal?: number): number | st
 /**
  * @description 浮点数相关计算，所有计算结果均会返回对应字符串
  */
-export default {
+export {
     setNumberDecimal,
     addCalc,
     subCalc,

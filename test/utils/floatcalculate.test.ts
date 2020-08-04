@@ -54,7 +54,9 @@ describe('utils 浮点数计算', () => {
         expect(utils.divCalc(null, 0)).toEqual(0);
     });
     test('四则运算 expCalc', () => {
-        expect(utils.expCalc('6.225 - 0.2')).toEqual(6.025);
+        expect(utils.expCalc('0.6 / 0.1')).toEqual(6);
+        expect(utils.expCalc('-6.225 - 0.2 + 0.1 * 0.2 - 0.02')).toEqual(-6.425);
+        expect(utils.expCalc('-6.225 - 0.2 + 0.1 * 0.2 - 0.02')).toEqual(-6.425);
         expect(utils.expCalc('(6.225 - 0.2) / 0.1')).toEqual(60.25);
         expect(utils.expCalc('(6.225 - 0.2) / 0.1', 1)).toEqual('60.0');
         expect(utils.expCalc([

@@ -1,5 +1,5 @@
 import utils from './utils';
 
-export default{
+export default {
     ...utils,
 }
