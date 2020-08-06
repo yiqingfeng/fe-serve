@@ -28,3 +28,8 @@ interface EventBusClass {
     $emit: (events: string, ...args: any[]) => EventBusClass;
 }
 ```
+
+
+## 项目开发支持
+
+目前项目使用 rollup 进行打包，支持 `common.js`、`ES module`、`UMD` 等形式。
