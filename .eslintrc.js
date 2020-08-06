@@ -1,43 +1,50 @@
-const ISDEUG = process.env.NODE_ENV === 'development';
-
 module.exports = {
     root: true,
-
+    parser: '@typescript-eslint/parser', // 使用 ts 解析器
     env: {
-        node: true
+        browser: true,
+        node: true,
+        es6: true,
     },
-
     parserOptions: {
-        parser: '@typescript-eslint/parser',
-        sourceType: 'module'
+        sourceType: 'module',
     },
-
     extends: [
-        'plugin:vue/essential',
-        'eslint:recommended',
-        'airbnb-base',
-        'plugin:vue/recommended'
+        'eslint:recommended', // eslint 推荐规则
+        'plugin:@typescript-eslint/recommended', // ts 推荐规则
+    ],
+    plugins: [
+        '@typescript-eslint',
+        'jest',
     ],
 
     globals: {
 
     },
     rules: {
-        'indent': ['error', 4],
-        'import/extensions': 'off',
-        'no-console': ISDEUG ? 0 : 1,
-        'no-underscore-dangle': ['error', {
-            allowAfterThis: true,
-            // 'allow': ['_events']
-        }],
-        'vue/html-indent': ['error', 4]
-    },
+        // https://cn.eslint.org/docs/rules/
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always",
+                "functions": "never"
+            }
+        ],
+        "indent": ["warn", 4],
+        "space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "always",
+                "named": "never",
+                "asyncArrow": "always"
+            }
+        ],
+        "semi": "off",
 
-    'extends': [
-        'plugin:vue/essential',
-        'eslint:recommended',
-        'airbnb-base',
-        'plugin:vue/recommended',
-        '@vue/typescript'
-    ]
+        // ts-eslint
+        "@typescript-eslint/no-explicit-any": "off"
+    },
 };

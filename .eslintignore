@@ -1,1 +1,6 @@
 docs/
+lib/
+
+.eslintrc.js
+rollup.config.js
+gulpfile.js
