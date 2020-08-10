@@ -66,4 +66,12 @@ describe('floatcalculate 浮点数计算', () => {
             '(', 6.225, '-', '0.2', ')', '/', '0.1',
         ], 1)).toEqual('60.0');
     });
+    test('金额格式化展示 parseMoney', () => {
+        expect(floatcalculate.parseMoney(null)).toEqual('￥0.00');
+        expect(floatcalculate.parseMoney(1271395.225)).toEqual('￥1,271,395.23');
+        expect(floatcalculate.parseMoney('1271395.225')).toEqual('￥1,271,395.23');
+        expect(floatcalculate.parseMoney(undefined, '$')).toEqual('$0.00');
+        expect(floatcalculate.parseMoney(1271395.225, '$')).toEqual('$1,271,395.23');
+        expect(floatcalculate.parseMoney('1271395.225', '$')).toEqual('$1,271,395.23');
+    });
 })

@@ -8,7 +8,7 @@ type NumberData = number | string | undefined | null;
  * @description 将指定字符串或数字转换成数字 undefined | null 会被视为 0
  * @param num {string | number} 带转换的数字
  */
-function toNumber(num ?: string | number | null): number {
+function toNumber(num?: string | number | null): number {
     let data = Number(num);
     if (isNaN(data)) {
         data = 0;
@@ -294,6 +294,18 @@ function expCalc(expQueue: NumberData[] | string, decimal?: number): number | st
 }
 
 /**
+ * @description 解析金额信息，并进行格式化处理 eg.  1231.11 -> ￥1,231.11
+ * @param  {number} money    待格式化金额
+ * @param  {String} currency 当前货币符号
+ * @return {String}          格式化后的数据信息
+ */
+function parseMoney(money: NumberData, currency = '￥') {
+    let num = setNumberDecimal(money, 2);
+    num = num.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    return currency + num;
+}
+
+/**
  * @description 浮点数相关计算，所有计算结果均会返回对应字符串
  */
 export default {
@@ -303,4 +315,5 @@ export default {
     mulCalc,
     divCalc,
     expCalc,
+    parseMoney,
 };
