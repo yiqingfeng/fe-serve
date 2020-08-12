@@ -12,6 +12,7 @@
         // "declarationMap": true,
         "typeRoots": [
             "./node_modules/@types",
+            "./typings/"
         ],
 
         /* 强类型检查配置 */
