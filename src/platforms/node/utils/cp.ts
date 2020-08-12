@@ -1,40 +1,24 @@
 /**
  * @description 子进程相关
+ * 暂时仅处理同步版本
  */
 import cp from 'child_process';
 import base from './base';
-
-type CpOptions = cp.ExecSyncOptionsWithStringEncoding;
 
 const {
     isWindows,
 } = base;
 
 /**
- * @description 执行指定命令
+ * @description exec 执行指定命令
  */
-function cpExec(cmd: string, opts?: CpOptions): resData<string>;
-function cpExec(cmd: string, opts: CpOptions, isAsync: boolean): Promise<any> | resData<string>;
-function cpExec(cmd: string, opts?: CpOptions, isAsync?: boolean): Promise<any> | resData<string> {
-    const options: CpOptions = Object.assign({
+function cpExec(cmd: string, options?: cp.ExecOptions): resData<string> {
+    options = Object.assign({
         maxBuffer: 4 << 20,
-    }, opts);
+    }, options);
     if (!isWindows()) {
         options.shell = '/bin/bash';
     }
-    // 异步处理
-    if (isAsync) {
-        return new Promise((resolve, reject) => {
-            cp.exec(cmd, options, function (error, stdout, stderr) {
-                if (error) {
-                    return reject(error);
-                }
-
-                resolve(stdout.toString());
-            });
-        });
-    }
-    // 同步处理
     const res: resData<string> = {
         errCode: 0,
         data: '',
@@ -49,13 +33,34 @@ function cpExec(cmd: string, opts?: CpOptions, isAsync?: boolean): Promise<any> 
 }
 
 /**
- * @param cmd
+ * @description spawn 要运行的命令
+ * spawn 没有预置 maxBuffer
  */
-// export function cpSpawn(cmd: string) {
+function cpSpawn(cmd: string, options?: cp.SpawnSyncOptionsWithStringEncoding): resData<string> {
+    const command: string[] = cmd.split(' ');
+    options = Object.assign({}, options);
+    if (!isWindows() && !options.shell) {
+        options.shell = '/bin/bash';
+    }
+    const res: resData<string> = {
+        errCode: 0,
+        data: '',
+    };
 
-// }
+    try {
+        const data = cp.spawnSync(command[0], command.slice(1), options);
+        if (data.error) {
+            res.errCode = -1;
+        } else {
+            res.data = data.output[0].toString(); // 将 buffer 转换成 string
+        }
+    } catch (error) {
+        res.errCode = -1;
+    }
+    return res;
+}
 
 export default {
     cpExec,
-    // cpSpawn,
+    cpSpawn,
 }
