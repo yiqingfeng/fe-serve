@@ -299,7 +299,7 @@ function expCalc(expQueue: NumberData[] | string, decimal?: number): number | st
  * @param  {String} currency 当前货币符号
  * @return {String}          格式化后的数据信息
  */
-function parseMoney(money: NumberData, currency = '￥') {
+function parseMoney(money: NumberData, currency = '￥'): string {
     let num = setNumberDecimal(money, 2);
     num = num.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     return currency + num;

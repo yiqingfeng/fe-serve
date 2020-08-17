@@ -1,4 +1,3 @@
-const alias = require('@rollup/plugin-alias')
 const babel = require('rollup-plugin-babel');
 const commonjs = require('rollup-plugin-commonjs');
 const resolve = require('rollup-plugin-node-resolve');
@@ -14,7 +13,6 @@ const {
 } = require('rollup-plugin-terser');
 
 const {
-    aliases,
     builds,
 } = require('./config');
 
@@ -29,25 +27,7 @@ function genConfig(name) {
         input: options.entry,
         external: options.external,
         plugins: [
-            // 别名处理
-            // alias(Object.assign({}, aliases, options.alias)),
-            alias({
-                entries: Object.keys(aliases).map(key => {
-                    return {
-                        find: key,
-                        replacement: aliases[key],
-                    };
-                }),
-                customResolver: resolve({
-                    extensions: ['.mjs', '.js', '.jsx', '.json', '.sass', '.scss'],
-                }),
-                // entries: [
-                //     {
-                //         find: 'shared',
-                //         replacement: aliases['shared'],
-                //     }
-                // ]
-            }),
+            // 别名处理，通过 tsconfig.json 中 compilerOptions.paths 配置
 
             // 验证导入的文件
             eslint({

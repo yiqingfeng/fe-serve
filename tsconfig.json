@@ -14,11 +14,23 @@
             "./node_modules/@types",
             "./typings/"
         ],
-
+        "paths": {
+            "shared": [
+                "./src/shared"
+            ],
+            "core": [
+                "./src/platforms/core"
+            ],
+            "web": [
+                "./src/platforms/web"
+            ],
+            "node": [
+                "./src/platforms/node"
+            ]
+        },
         /* 强类型检查配置 */
         "strict": true,
         "noImplicitAny": false,
-
         /* 模块分析配置 */
         "baseUrl": ".",
         "outDir": "./lib",

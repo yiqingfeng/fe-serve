@@ -78,6 +78,5 @@ const builds = {
 };
 
 module.exports = {
-    aliases,
     builds,
 };
